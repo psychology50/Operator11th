@@ -84,11 +84,13 @@ const paintFilterTodo = (todo) =>{
     const checkElement = document.createElement('button');
     checkElement.classList.add('checkbox');
     checkElement.innerHTML = "✔︎";
+    checkElement.addEventListener('click', ()=> completeTodo(todo.id));
 
     // content
     const contentElement = document.createElement('div');
     contentElement.classList.add('content');
     contentElement.innerHTML = todo.content;
+    contentElement.addEventListener('dblclick', (e)=> dbclickTodo(e, todo.id));
 
     // delete button
     const deleteElement = document.createElement('button');
@@ -103,6 +105,51 @@ const paintFilterTodo = (todo) =>{
     // ul 태그에 현재 li 태그 합치기
     todoList.appendChild(liElement);
 };
+
+const completeTodo = (todoId) => {
+    const newTodos = getAllTodos().map(todo => (todo.id === todoId) ? {...todo, isCompleted : !todo.isCompleted} : todo);
+    setTodos(newTodos);
+    paintTodos();
+    // checkIsAllCompleted();
+    setLeftItems();
+};
+
+// todo-list에 input.edit-input 추가하기
+const dbclickTodo = (e, todoId) => {
+    const inputElement = document.createElement('input');
+    inputElement.classList.add('edit-input');
+    const content = e.target.innerHTML;
+    inputElement.value = content;
+    const curElement = e.target;
+    const parentElement = curElement.parentNode;
+
+    const clickBody = (e) => {
+        if(e.target !== inputElement){
+            parentElement.removeChild(inputElement);
+        }
+    }
+
+    inputElement.addEventListener('keypress', (e)=>{
+        if(e.key === "Enter"){
+            if(String(e.target.value).trim() !== ""){
+                updateTodo(e.target.value, todoId);
+            }
+            else{
+                alert("현재 입력한 할 일이 없습니다!");
+            }
+        }
+    });
+
+    parentElement.appendChild(inputElement); // li 태그에 input 추가
+    document.body.addEventListener('click', clickBody); // body에 click 이벤트 추가
+}
+
+// todos 객체 배열에서 할일 수정
+const updateTodo = (content, todoId) => {
+    const newTodos = getAllTodos().map(todo => todo.id === todoId ? {...todo, content} : todo );
+    setTodos(newTodos);
+    paintTodos();
+}
 
 const setLeftItems = () => {
     const leftTodo = getAllTodos().filter(todo => todo.isCompleted === false);
