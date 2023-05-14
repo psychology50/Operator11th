@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {Header, Nav, Article, Create, Update} from "./components";
 
-function App() {
+const App = () => {
   const [mode, setMode] = useState('WELCOME');
   const [id, setId] = useState(null);
   const [nextId, setNextId] = useState(4);
@@ -12,19 +12,15 @@ function App() {
     {id: 3, title: 'js', body: 'javascript is ...'},
   ])
 
-  // 선언형 프로그래밍으로 수정된 부분 시작
-  const handleModeChange = (newMode) => {
-    setMode(newMode);
-  };
-
   const handleTopicClick = (topicId) => {
     setMode('READ');
     setId(topicId);
   };
 
-  const handleCreate = (_title, _body) => {
-    const newTopic = { id: nextId, title: _title, body: _body };
+  const handleCreate = (title, body) => {
+    const newTopic = { id: nextId, title: title, body: body };
     const newTopics = [...topics, newTopic];
+
     setTopics(newTopics);
     setMode('READ');
     setId(nextId);
@@ -35,40 +31,45 @@ function App() {
     const newTopics = topics.map((topic) =>
       topic.id === id ? { ...topic, title: title, body: body } : topic
     );
+
     setTopics(newTopics);
     setMode('READ');
   };
 
   let content = null;
   let contextControl = null; 
+  let topic = null;
 
-  if (mode === 'WELCOME') {
-    content = <Article title="Welcome" body="Hello, WEB"/>
-  } else if (mode === 'READ') {
-    const topic = topics.find(topic => topic.id === id);
-
-    content = <Article title={topic.title} body={topic.body}/>
-    contextControl= <li><a href={'/update/' + id} onClick={(e)=>{
-      e.preventDefault();
-      setMode('UPDATE');  
-    }}>Update</a></li> 
-  } else if (mode === 'CREATE') {
-    content = <Create onCreate={handleCreate} />;
-  } else if (mode === 'UPDATE') {
-    const topic = topics.find((topic) => topic.id === id);
-    content = <Update
-      title={topic.title}
-      body={topic.body}
-      onUpdate={handleUpdate}
-    />
+  switch (mode) {
+    case 'WELCOME':
+      content = <Article title="Welcome" body="Hello, WEB"/>;
+      break;
+    case 'READ':
+      topic = topics.find((topic) => topic.id === id);
+      content = <Article title={topic.title} body={topic.body}/>;
+      contextControl = <li>
+          <a href={'/update/' + id} onClick={(e)=>{
+              e.preventDefault();
+              setMode('UPDATE');  
+            }
+          }> Update </a>
+        </li>
+      break;
+    case 'CREATE':
+      content = <Create onCreate={handleCreate} />;
+      break;
+    case 'UPDATE':
+      topic = topics.find((topic) => topic.id === id);
+      content = <Update title={topic.title} body={topic.body} onUpdate={handleUpdate}/>
+      break;
+    default: break;
   }
-  
+
   return (
     <div>
       <Header 
-        title="React" onChangeMode={() => {
-          handleModeChange('WELCOME');
-        }}
+        title="React" 
+        onChangeMode={() => {setMode('WELCOME');}}
       />
       <Nav 
         topics={topics} 
