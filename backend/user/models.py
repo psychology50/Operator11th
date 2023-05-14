@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django.core import validators
 from django.utils.translation import gettext_lazy as _
 from django.utils.deconstruct import deconstructible
+from blog.models import Blog
 # Create your models here.
 
 class CustomAccountManger(BaseUserManager):
@@ -30,6 +31,8 @@ class CustomAccountManger(BaseUserManager):
             **extra_fields
         )
         user.set_password(password)
+
+        user.blog = Blog.objects.create()
         user.save()
         return user
 
@@ -85,6 +88,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     )
     create_dt = models.DateTimeField(auto_now_add=True)
     update_dt = models.DateTimeField(auto_now=True)
+
+    blog = models.OneToOneField(Blog, on_delete=models.CASCADE)
 
     objects = CustomAccountManger()
     USERNAME_FIELD = 'username'

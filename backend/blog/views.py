@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse, HttpResponseRedirect
 from .models import Post
 from django.core.paginator import Paginator
+from django.urls import reverse
+from .forms import PostForm
+from django.contrib import messages
+
 # Create your views here.
 
 def home(request):
@@ -12,3 +16,44 @@ def home(request):
     posts = paginator.get_page(pageNum)
 
     return render(request, 'index.html', {'posts':posts})
+
+def post_create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user.blog
+            post.save()
+            return HttpResponseRedirect(reverse('post_detail', args=[post.pk]))
+    else:
+        form = PostForm()
+        return HttpResponseRedirect(reverse('post_create'))
+
+def post_list(request):
+    posts = Post.postobjects.all()
+    print(f" post_list : {posts} ")
+    return HttpResponse('Post list.')
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    print(f" post_detail : {post} ")
+    return HttpResponse('Post detail.')
+
+def post_update(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user.blog
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+    return HttpResponse('Post update.')
+
+def post_delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    messages.success(request, "Post deleted successfully.")
+    return redirect('home')
