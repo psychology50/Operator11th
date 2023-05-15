@@ -1,6 +1,6 @@
 const Header = (props) => {
     return (
-      <header>
+      <header id='title'>
         <h1>
           <a href="/" 
              onClick={(e) => {

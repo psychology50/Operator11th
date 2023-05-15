@@ -10,7 +10,7 @@ function Update(props) {
     };
 
     return (
-      <article>
+      <article id="input_form">
         <h2>Update</h2>
         <form onSubmit={handleSubmit}>
           <p><input type="text" name="title" placeholder="title" value={title} 

@@ -1,0 +1,135 @@
+:root{
+    --yellow-color : #f8f9a1;
+    --blue-color: aliceblue;
+    --background-color: rgb(250, 250, 250);
+  }
+  
+  *{
+    margin : 0;
+    padding: 0 ;
+    cursor: default;
+  }
+  
+  body{
+    min-height: 100%;
+    display: flex;
+    flex-wrap: nowrap;  
+    justify-content: center;
+    background-color:var(--background-color);
+  }
+  
+  a{
+    text-decoration-line: none;
+  }
+  
+   /* 헤더부분 Title.js */
+  #title{
+    padding: 2.5rem;
+  
+  }
+  #title a{
+    font-size: 40px;
+    font-size: bold;
+    color: #000000;
+  }
+  
+  #title a:hover{
+    background-color:var(--blue-color);
+    border-radius: 30%;
+  }
+  
+  
+  /* Nav 부분 Nav.js*/
+  #nav_list li{
+    padding: 1rem;
+    
+  }
+  
+  #nav_list a{
+    font-size: 15px;
+    color:black;
+    font-weight: 500;
+  }
+  
+  #nav_list a:hover{
+    background-color:var(--blue-color);
+    border-radius: 20%;
+  }
+  
+  /* article 부분 Article.js*/
+  #article{
+    padding: 2.2rem;
+    border-radius: 20%;
+  }
+  #article h2{
+    font-size: 30px;
+  }
+  
+  /* 입력 form 부분 Create.js Update.js*/
+  #input_form h2{
+    font-size: 30px;
+    margin-top: 3rem;
+  }
+  
+  #input_form input, textarea{
+    padding: 5px;
+    border: solid 0.5px grey;
+    margin-top: 0.5rem;
+  } 
+  
+  /* App.js */
+  .viewContainer{
+    background-color: white;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10rem;
+    padding: 5rem;
+  
+    border: solid 3px var(--blue-color);
+    border-radius: 20%;
+    box-shadow: 10px 10px var(--blue-color);
+  }
+  
+  .main_block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 50%;
+  }
+  
+  .sub_block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 50%;
+  }
+  
+  
+  /* form 버튼 */
+  #form_btn{
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  #form_btn a{
+    color: white;
+    font-size: 25px;
+    
+    font-weight: 500;
+    background-color:var(--yellow-color);
+    border-radius: 35%;
+  }
+  
+  #form_btn li{
+    list-style: none;
+    padding: 0.5rem;
+  }
+  
+  #form_btn li :hover{
+    color: black;
+  }
+  

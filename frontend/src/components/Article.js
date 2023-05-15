@@ -1,6 +1,6 @@
 const Article = (props) => {
     return (
-      <article>
+      <article id="article">
         <h2>{props.title}</h2>
         {props.body}
       </article>

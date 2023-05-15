@@ -1,6 +1,6 @@
 const Nav = (props) => {
     return (
-      <nav>
+      <nav id="nav_list">
         <ol>
           {props.topics.map((t) => (
             <li key={t.id}>

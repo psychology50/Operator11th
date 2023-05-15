@@ -66,27 +66,32 @@ const App = () => {
   }
 
   return (
-    <div>
-      <Header 
-        title="React" 
-        onChangeMode={() => {setMode('WELCOME');}}
-      />
-      <Nav 
-        topics={topics} 
-        onChangeMode={handleTopicClick}
-      />
+    <div className = "viewContainer">
+      <div className="main_block">
+        <Header 
+          title="React" 
+          onChangeMode={() => {setMode('WELCOME');}}
+        />
+        <Nav 
+          topics={topics} 
+          onChangeMode={handleTopicClick}
+        />
+      </div>
 
-      {content}
+      <div className="sub_block"> 
+      
+        {content}
 
-      <ul>
-        <li>
-          <a href="/create" onClick={(e)=>{
-            e.preventDefault();
-            setMode('CREATE');
-          }}>Create</a>
-        </li>
-        {contextControl}
-      </ul>
+        <ul id="form_btn">
+          <li>
+            <a href="/create" onClick={(e)=>{
+              e.preventDefault();
+              setMode('CREATE');
+            }}>Create</a>
+          </li>
+          {contextControl}
+        </ul>
+      </div>
     </div>
 
   );
