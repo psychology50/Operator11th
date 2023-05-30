@@ -181,7 +181,7 @@
             </td>
         </tr>
         <tr>
-            <th rowspan="3">절차</th>
+            <th rowspan="4">절차</th>
             <td>
                 <strong>1. url 및 view 개발</strong><br/>
                 • url 패턴과 view 함수 개발 방법<br/>
@@ -284,7 +284,7 @@
         </tr>
         <tr>
             <th>과제</th>
-            <td>0</td>
+            <td>-</td>
         </tr>
     </tbody>
 </table>
