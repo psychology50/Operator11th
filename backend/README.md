@@ -1,4 +1,4 @@
-## Frontend
+## Backend
 
 ### 1주차
 
@@ -151,6 +151,140 @@
         <tr>
             <th>과제</th>
             <td>자신만의 MBTI 검사 페이지 만들어보기</td>
+        </tr>
+    </tbody>
+</table>
+
+### 3주차
+
+<table>
+    <tbody>
+        <tr>
+            <th>트랙</th>
+            <td>BE</td>
+        </tr>
+        <tr>
+            <th>날짜</th>
+            <td>'23.05.17</td>
+        </tr>
+        <tr>
+            <th>주제</th>
+            <td>Django 아키텍처 이해</td>
+        </tr>
+        <tr>
+            <th>목표</th>
+            <td>
+            • url 및 뷰 플로우와 개발 방법 이해할 수 있다.<br/>
+            • ORM을 활용한 데이터베이스를 조작할 수 있다.<br/>
+            • CRUD 기능 구현을 할 수 있다.<br/>
+            • 정적 파일과 미디어 파일 처리 방법 이해<br/>
+            </td>
+        </tr>
+        <tr>
+            <th rowspan="3">절차</th>
+            <td>
+                <strong>1. url 및 view 개발</strong><br/>
+                • url 패턴과 view 함수 개발 방법<br/>
+                • url 매핑과 view 함수 연결 방법<br/>
+                • view 함수에서의 요청 처리와 응답 방법<br/>
+                • 클래스 기반 뷰의 활용 방법<br/>
+                <br/>
+                예상 소요 시간 : 20min
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>2. ORM과 데이터 베이스 조작</strong><br/>
+                • ORM 개념과 장점<br/>
+                • ORM 활용법<br/>
+                <br/>
+                예상 소요 시간 : 20min
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>3. 정적 파일과 미디어 파일</strong><br/>
+                • 정적 파일의 활용 방법 이해 <br/>
+                • 미디어 파일 업로드 및 처리 방법<br/>
+                • 미디어 파일의 url 설정과 접근 방법<br/>
+                <br/>
+                예상 소요 시간 : 20min
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>4. Test Case</strong><br/>
+                • 테스트 케이스란<br/>
+                • 테스트 케이스 작성<br/>
+                • (번외) TDD란?<br/>
+                <br/>
+                예상 소요 시간 : 20min
+            </td>
+        </tr>
+        <tr>
+            <th>과제</th>
+            <td>2주차에 설계한 DB 모델링 결과 기반 Post, Comment CRUD 구현 및 테스트 케이스 작성</td>
+        </tr>
+    </tbody>
+</table>
+
+### 4주차
+
+<table>
+    <tbody>
+        <tr>
+            <th>트랙</th>
+            <td>BE</td>
+        </tr>
+        <tr>
+            <th>날짜</th>
+            <td>'23.05.24</td>
+        </tr>
+        <tr>
+            <th>주제</th>
+            <td>REST API</td>
+        </tr>
+        <tr>
+            <th>목표</th>
+            <td>
+            • REST API가 무엇인지 이해할 수 있다.<br/>
+            • Django REST Framework를 다룰 수 있다.<br/>
+            </td>
+        </tr>
+        <tr>
+            <th rowspan="3">절차</th>
+            <td>
+                <strong>1. DRF : Django REST Framework</strong><br/>
+                • REST API란?<br/>
+                &nbsp;&nbsp;&nbsp;
+                    - API & RESTful<br/>
+                • DRF 설치<br/>
+                <br/>
+                예상 소요 시간 : 20min
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>2. Serializer</strong><br/>
+                • JSON<br/>
+                • Serializer<br/>
+                • APIView와 Serializer 예시 코드<br/>
+                <br/>
+                예상 소요 시간 : 20min
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>3. Postman </strong><br/>
+                • Postman이란<br/>
+                • 사용<br/>
+                <br/>
+                예상 소요 시간 : 20min
+            </td>
+        </tr>
+        <tr>
+            <th>과제</th>
+            <td>0</td>
         </tr>
     </tbody>
 </table>
